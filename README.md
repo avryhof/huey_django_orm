@@ -15,7 +15,7 @@ project.
 So, I took a copy of SqliteHuey, and re-implemented the class functionality using Django ORM.
 
 Huey doesn't do anything too crazy, so it should work with any database backend supported by Django. We also don't use
-any non-standard Django stuff, so it should work with any modern django version.
+any non-standard Django stuff, so it should work with any modern Django version.
 
 ## Installation
 
@@ -65,9 +65,9 @@ That's it!  Now you can use Huey just like you normally would.
 
 ## Admin
 
-Since this project is specific to Django, and will likely never be used without it, you get a few django goodies rolled
+Since this project is specific to Django, and will likely never be used without it, you get a few Django goodies rolled
 right in.
 
 * Each Model has a ModelAdmin
-* There is an auto_now_add field in each modelso we can see when an object was created within the admin
+* There is an auto_now_add field in each model so we can see when an object was created within the admin
 * Ordering is defined at the model level, so objects will appear in the admin in the same way they will be processed.
