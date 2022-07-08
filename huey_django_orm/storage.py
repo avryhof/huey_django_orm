@@ -2,10 +2,10 @@ import logging
 import threading
 
 from django.apps import apps as django_apps
+from django.utils.timezone import make_aware
 from huey.api import Huey
 from huey.constants import EmptyData
 from huey.storage import BaseStorage, to_bytes, to_blob
-from huey.utils import to_timestamp
 
 logger = logging.getLogger(__name__)
 
@@ -69,10 +69,10 @@ class DjangoORMStorage(BaseStorage):
     def add_to_schedule(self, data, ts, utc):
         if self.schedule_model is None:
             self.schedule_model = django_apps.get_model("huey_django_orm.HueySchedule", require_ready=False)
-        self.schedule_model.objects.create(queue=self.name, data=to_blob(data), timestamp=to_timestamp(ts))
+        self.schedule_model.objects.create(queue=self.name, data=to_blob(data), timestamp=make_aware(ts))
 
     def read_schedule(self, ts):
-        scheduled_tasks = self.schedule_tasks.filter(timestamp__lte=to_timestamp(ts))
+        scheduled_tasks = self.schedule_tasks.filter(timestamp__lte=make_aware(ts))
 
         data = [to_bytes(scheduled_task.data) for scheduled_task in scheduled_tasks]
         scheduled_tasks.delete()
