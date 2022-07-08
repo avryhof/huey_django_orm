@@ -43,9 +43,10 @@ class DjangoORMStorage(BaseStorage):
         except self.task_model.DoesNotExist:
             pass
         else:
-            data = result.data
-            result.delete()
-            return to_bytes(data)
+            if result is not None:
+                data = result.data
+                result.delete()
+                return to_bytes(data)
 
     def enqueue(self, data, priority=None):
         if self.task_model is None:
@@ -103,7 +104,8 @@ class DjangoORMStorage(BaseStorage):
         except self.keystore_model.DoesNotExist:
             return EmptyData
         else:
-            return to_bytes(res.value)
+            if res is not None:
+                return to_bytes(res.value)
 
     def pop_data(self, key):
         try:
@@ -111,10 +113,11 @@ class DjangoORMStorage(BaseStorage):
         except self.keystore_model.DoesNotExist:
             return EmptyData
         else:
-            data = to_bytes(res.value)
-            res.delete()
+            if res is not None:
+                data = to_bytes(res.value)
+                res.delete()
 
-            return data
+                return data
 
     def has_data_for_key(self, key):
         return self.peek_data(key) != EmptyData
