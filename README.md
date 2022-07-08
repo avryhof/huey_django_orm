@@ -1,6 +1,6 @@
 [![PyPI version](http://img.shields.io/pypi/v/huey-django-orm.svg?style=flat-square)](https://pypi.python.org/pypi/huey-django-orm)
 [![license](http://img.shields.io/pypi/l/huey-django-orm.svg?style=flat-square)](https://pypi.python.org/pypi/huey-django-orm)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/avryhof?country.x=US&locale.x=en_US)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=flat-square)](https://paypal.me/avryhof?country.x=US&locale.x=en_US)
 
 huey_django_orm
 =
