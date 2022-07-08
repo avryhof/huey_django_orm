@@ -1,5 +1,5 @@
-[![PyPI version](http://img.shields.io/pypi/v/huey_django_orm.svg?style=flat-square)](https://pypi.python.org/pypi/huey_django_orm)
-[![license](http://img.shields.io/pypi/l/huey_django_orm.svg?style=flat-square)](https://pypi.python.org/pypi/huey_django_orm)
+[![PyPI version](http://img.shields.io/pypi/v/huey-django-orm.svg?style=flat-square)](https://pypi.python.org/pypi/huey-django-orm)
+[![license](http://img.shields.io/pypi/l/huey-django-orm.svg?style=flat-square)](https://pypi.python.org/pypi/huey-django-orm)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/avryhof?country.x=US&locale.x=en_US)
 
 huey_django_orm
@@ -22,7 +22,7 @@ any non-standard Django stuff, so it should work with any modern Django version.
 Install with pip
 
 ```bash
-pip install huey_django_orm
+pip install huey-django-orm
 ```
 
 ### settings.py
