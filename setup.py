@@ -27,7 +27,6 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Django",
-        "Framework :: huey",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
