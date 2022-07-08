@@ -23,6 +23,7 @@ setup(
     author_email="avryhof@gmail.com",
     description="A module to use Django ORM for storage with huey.",
     long_description=readme,
+    long_description_content_type="text/markdown",
     keywords="huey,django,huey.contrib.djhuey",
     classifiers=[
         "Development Status :: 5 - Production/Stable",

@@ -31,9 +31,9 @@ Add to INSTALLED_APPS
 
 ```python
 INSTALLED_APPS = [
-    "&hellip;",
+    "...",
     "huey_django_orm",
-    "&hellip;",
+    "...",
 ]
 ```
 
@@ -49,9 +49,9 @@ or if you need other options
 
 ```python
 HUEY = {
-    "&hellip;": "&hellip;",
+    "...": "...",
     'huey_class': 'huey_django_orm.storage.DjangoORMHuey',
-    "&hellip;&hellip;": "&hellip;",
+    "......": "...",
 }
 ```
 
