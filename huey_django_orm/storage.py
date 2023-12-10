@@ -14,6 +14,7 @@ class DjangoORMStorage(BaseStorage):
     task_model = None
     schedule_model = None
     keystore_model = None
+    dequeue_lock = threading.Lock()
 
     def __init__(self, name='huey', **kwargs):
         super(DjangoORMStorage, self).__init__(name=name, **kwargs)
@@ -38,15 +39,16 @@ class DjangoORMStorage(BaseStorage):
         return self.keystore_model.objects.filter(queue=self.name)
 
     def dequeue(self):
-        try:
-            result = self.queue_items.first()
-        except self.task_model.DoesNotExist:
-            pass
-        else:
-            if result is not None:
-                data = result.data
-                result.delete()
-                return to_bytes(data)
+        with self.dequeue_lock:
+            try:
+                result = self.queue_items.first()
+            except self.task_model.DoesNotExist:
+                pass
+            else:
+                if result is not None:
+                    data = result.data
+                    result.delete()
+                    return to_bytes(data)
 
     def enqueue(self, data, priority=None):
         if self.task_model is None:
