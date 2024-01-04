@@ -30,6 +30,7 @@ class Migration(migrations.Migration):
                 ('timestamp', models.DateTimeField(blank=True, null=True)),
                 ('created', models.DateTimeField(auto_now_add=True, null=True)),
             ],
+            options={'ordering': ('timestamp',)},
         ),
         migrations.CreateModel(
             name='HueyTask',
@@ -40,5 +41,6 @@ class Migration(migrations.Migration):
                 ('priority', models.DecimalField(blank=True, decimal_places=4, max_digits=5, null=True)),
                 ('created', models.DateTimeField(auto_now_add=True, null=True)),
             ],
+            options={'ordering': ('-priority', 'id')},
         ),
     ]
