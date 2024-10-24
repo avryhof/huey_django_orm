@@ -68,7 +68,7 @@ class DjangoORMStorage(BaseStorage):
     def flush_queue(self):
         self.queue_items.delete()
 
-    def add_to_schedule(self, data, ts, utc):
+    def add_to_schedule(self, data, ts, utc=None):
         if self.schedule_model is None:
             self.schedule_model = django_apps.get_model("huey_django_orm.HueySchedule", require_ready=False)
         self.schedule_model.objects.create(queue=self.name, data=to_blob(data), timestamp=make_aware(ts))
