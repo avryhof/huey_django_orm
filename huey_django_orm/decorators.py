@@ -24,7 +24,7 @@ def retry_on_db_disconnect(max_retries: int = 5, initial_delay: int = 5, backoff
                 try:
                     return handler(*args, **kwargs)
                 except OperationalError as e:
-                    logger.warning(f"Database operational error: {e}. Retrying in {current_delay} seconds...")
+                    logger.warning("Database operational error: %s. Retrying in %d seconds...", e, current_delay)
                     close_old_connections()
                     time.sleep(current_delay)
                     retries += 1
