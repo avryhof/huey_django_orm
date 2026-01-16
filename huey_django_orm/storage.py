@@ -1,14 +1,33 @@
+import functools
 import logging
 import threading
 
-from decorators import retry_on_db_disconnect
 from django.apps import apps as django_apps
+from django.db import OperationalError, close_old_connections
 from django.utils.timezone import make_aware
 from huey.api import Huey
 from huey.constants import EmptyData
 from huey.storage import BaseStorage, to_blob, to_bytes
 
 logger = logging.getLogger(__name__)
+
+
+def retry_on_db_disconnect():
+
+    def decorator(func):   
+        @functools.wraps(func)
+        def wrap(*args, **kwargs) -> None:
+            try:
+                return func(*args, **kwargs)
+            except OperationalError:
+                logger.exception("Database connection error.")
+                close_old_connections()
+
+            return func(*args, **kwargs)
+
+        return wrap
+
+    return decorator
 
 
 class DjangoORMStorage(BaseStorage):
